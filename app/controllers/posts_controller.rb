@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :move_to_home
   before_action :set_post, only: %i(show edit update destroy)
 
   # GET /posts or /posts.json
@@ -58,6 +59,12 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def move_to_home
+    unless user_signed_in?
+      redirect_to root_path
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
