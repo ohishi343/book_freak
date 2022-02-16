@@ -14,7 +14,7 @@ RSpec.describe "posts/index", type: :view do
         title: "Title",
         body: "MyText",
         star: 2
-      )
+      ),
     ])
   end
 
