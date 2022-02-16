@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     get "logout", :to => "users/sessions#destroy"
   end
 
-  root "posts#index"
+  root "homes#index"
+  resources :homes
   resources :posts
   resources :users
   resources :favorites
