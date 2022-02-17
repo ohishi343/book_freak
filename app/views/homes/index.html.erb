@@ -1,3 +1,23 @@
 <h1>toppage</h1>
-<h3>signup</h3>
-<h3>login</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Star</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.author %></td>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td><%= post.star %></td>
+        <td><%= link_to 'Show', post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

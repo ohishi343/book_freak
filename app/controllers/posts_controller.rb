@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :move_to_home
+  before_action :authenticate_user!, except: [:show]
   before_action :set_post, only: %i(show edit update destroy)
+  before_action :set_q, only: [:index, :search]
 
   # GET /posts or /posts.json
   def index
@@ -58,12 +59,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    @results = @q.result
+  end
+
   private
 
-  def move_to_home
-    unless user_signed_in?
-      redirect_to root_path
-    end
+  def set_q
+    @q = Post.ransack(params[:q])
   end
 
   # Use callbacks to share common setup or constraints between actions.

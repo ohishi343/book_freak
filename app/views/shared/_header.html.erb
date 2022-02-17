@@ -1,0 +1,19 @@
+<header>
+  <% if user_signed_in? %>
+    <%= link_to "Bookfreak", root_path %>
+    <%= current_user.name %>
+    <%= link_to "プロフィール", user_path(current_user.id) %>
+    <%= link_to "新規投稿", new_post_path %>
+    <%= link_to "投稿した書評", posts_path %>
+    <%= link_to "予約済みルーム一覧", _path %>
+    <%= link_to "ログアウト", logout_path %>
+    <%= search_form_for @q, url: search_posts_path do |f| %>
+      <%= f.label :author_title_body_cont, "キーワード" %>
+      <%= f.search_field :author_title_body_cont %>
+      <%= f.submit "検索" %>
+    <% end %>
+  <% else %>
+    <%= link_to "ログイン", login_path %>
+    <%= link_to "サインアップ", signup_path %>
+  <% end %>
+</header>
