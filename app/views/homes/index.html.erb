@@ -6,6 +6,7 @@
       <th>Title</th>
       <th>Body</th>
       <th>Star</th>
+      <th>投稿者</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
         <td><%= post.title %></td>
         <td><%= post.body %></td>
         <td><%= post.star %></td>
+        <td><%= post.user.name %></td>
         <td><%= link_to 'Show', post %></td>
       </tr>
     <% end %>
