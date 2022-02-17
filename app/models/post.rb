@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
 
   validates :author, presence: true, length: { maximum: 20 }
   validates :title, presence: true, length: { maximum: 50 }

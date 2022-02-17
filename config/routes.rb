@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show]
   resources :favorites, only: [:index]
+  post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
+  delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
 end
