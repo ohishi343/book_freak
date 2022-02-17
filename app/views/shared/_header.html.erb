@@ -5,11 +5,11 @@
     <%= link_to "プロフィール", user_path(current_user.id) %>
     <%= link_to "新規投稿", new_post_path %>
     <%= link_to "投稿した書評", posts_path %>
-    <%= link_to "予約済みルーム一覧", _path %>
+    <%= link_to "お気に入り", favorites_path %>
     <%= link_to "ログアウト", logout_path %>
     <%= search_form_for @q, url: search_posts_path do |f| %>
-      <%= f.label :author_title_body_cont, "キーワード" %>
-      <%= f.search_field :author_title_body_cont %>
+      <%= f.label :author_or_title_or_body_cont, "キーワード" %>
+      <%= f.search_field :author_or_title_or_body_cont %>
       <%= f.submit "検索" %>
     <% end %>
   <% else %>

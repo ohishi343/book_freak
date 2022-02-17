@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_post, only: %i(show edit update destroy)
-  before_action :set_q, only: [:index, :search]
 
   # GET /posts or /posts.json
   def index
@@ -64,10 +63,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def set_q
-    @q = Post.ransack(params[:q])
-  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
