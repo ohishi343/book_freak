@@ -1,9 +1,7 @@
 <% if user_signed_in? && @user == current_user %>
   <h1><%= @user.name %>のマイページ</h1>
+  <%= link_to "プロフィール編集", edit_user_registration_path %>
 <% else %>
   <h1><%= @user.name %>のユーザーページ</h1>
 <% end %>
-
-<% if user_signed_in? && @user == current_user %>
-  <%= link_to "プロフィール編集", edit_user_path(current_user) %>
-<% end %>
+<%= link_to "戻る", root_path %>
