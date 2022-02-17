@@ -13,9 +13,7 @@ Rails.application.routes.draw do
   root "homes#index"
   resources :homes, only: [:index]
   resources :posts do
-    collection do
-      get "search"
-    end
+    get "search", on: :collection
   end
   resources :users, only: [:show]
   resources :favorites, only: [:index]

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.where(user_id: current_user.id)
+    @posts = Post.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.order(created_at: :desc)
   end
 
   private
