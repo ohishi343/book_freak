@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>投稿者:</strong>
+  <%= @post.user.name %>
+</p>
+
+<p>
   <strong>Author:</strong>
   <%= @post.author %>
 </p>
@@ -20,5 +25,9 @@
   <%= @post.star %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if @post.user == current_user %>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+  <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
 <%= link_to 'Back', posts_path %>
