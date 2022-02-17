@@ -17,7 +17,7 @@
         <td><%= post.title %></td>
         <td><%= post.body %></td>
         <td><%= post.star %></td>
-        <td><%= post.user.name %></td>
+        <td><%= link_to post.user.name, post.user %></td>
         <td><%= link_to 'Show', post %></td>
       </tr>
     <% end %>

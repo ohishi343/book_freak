@@ -5,20 +5,18 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get "user/:id", to: "users/registrations#detail"
     get "signup", to: "users/registrations#new"
     get "login", to: "users/sessions#new"
     get "logout", to: "users/sessions#destroy"
   end
 
   root "homes#index"
-  get "mypage", to: "users#mypage"
   resources :homes, only: [:index]
   resources :posts do
     collection do
       get "search"
     end
   end
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show]
   resources :favorites, only: [:index]
 end
