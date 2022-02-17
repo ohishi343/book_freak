@@ -1,25 +1,2 @@
 <h1>favorites</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Author</th>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Star</th>
-      <th>投稿者</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.author %></td>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= post.star %></td>
-        <td><%= link_to post.user.name, post.user %></td>
-        <td><%= link_to 'Show', post %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "shared/table", posts: @posts %>

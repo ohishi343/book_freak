@@ -60,7 +60,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @results = @q.result.order(created_at: :desc)
+    @posts = @q.result.order(created_at: :desc)
   end
 
   private
