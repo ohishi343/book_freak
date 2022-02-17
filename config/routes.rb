@@ -12,12 +12,13 @@ Rails.application.routes.draw do
   end
 
   root "homes#index"
-  resources :homes
+  get "mypage", to: "users#mypage"
+  resources :homes, only: [:index]
   resources :posts do
     collection do
       get "search"
     end
   end
-  resources :users
-  resources :favorites
+  resources :users, only: [:show, :edit, :update]
+  resources :favorites, only: [:index]
 end

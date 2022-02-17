@@ -6,16 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.new(
-  name: "user",
-  email: "example@example.com",
-  password: "password"
-)
-user.save!
+5.times do |n|
+  user = User.new(
+    name: "user#{n + 1}",
+    email: "example#{n + 1}@example.com",
+    password: "password"
+  )
+  user.save!
+end
 
-user.posts.create!(
-  author: "著者",
-  title: "書名",
-  body: "本文",
-  star: 4,
-)
+User.all.each do |user|
+  user.posts.create!(
+    author: "著者",
+    title: "書名",
+    body: "書評の本文",
+    star: 4,
+  )
+end
