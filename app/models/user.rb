@@ -6,9 +6,12 @@ class User < ApplicationRecord
   has_many :posts
   has_many :favorites, dependent: :destroy
 
+  has_one_attached :avatar
+
   validates :email, uniqueness: true, presence: true
   validates :encrypted_password, presence: true
   validates :name, presence: true, length: { maximum: 30 }
+  validates :profile, length: { maximum: 140 }
 
   def favorite_find(post_id)
     favorites.where(post_id: post_id).exists?

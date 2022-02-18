@@ -4,4 +4,24 @@
 <% else %>
   <h1><%= @user.name %>のユーザーページ</h1>
 <% end %>
+
+<table>
+  <tr>
+    <th>プロフィール画像</th>
+    <td><% if @user.avatar.attached? %><%= image_tag @user.avatar, size: "100x100" %><% end %></td>
+  </tr>
+  <tr>
+    <th>名前</th>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <th>自己紹介</th>
+    <td><% if @user.profile.present? %><%= @user.profile %><% end %></td>
+  </tr>
+</table>
+
 <%= link_to "戻る", root_path %>
