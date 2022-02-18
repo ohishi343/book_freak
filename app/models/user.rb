@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates :encrypted_password, presence: true
   validates :name, presence: true, length: { maximum: 30 }
-  validates :profile, length: { maximum: 140 }
+  validates :profile, length: { maximum: 200 }
 
   def favorite_find(post_id)
     favorites.where(post_id: post_id).exists?
