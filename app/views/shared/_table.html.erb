@@ -15,7 +15,19 @@
         <td><%= post.author %></td>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
-        <td><%= post.star %></td>
+        <td>
+          <div id="star-rate<%= post.id %>"></div>
+          <script>
+            $('#star-rate<%= post.id %>').raty({
+              size      : 36,
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= post.star %>,
+            });
+          </script>
+        </td>
         <td><%= link_to post.user.name, post.user %></td>
         <td><%= link_to 'Show', post %></td>
         <% if user_signed_in? && current_user != post.user %>
