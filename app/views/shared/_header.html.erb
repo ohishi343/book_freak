@@ -1,19 +1,26 @@
-<header>
-  <% if user_signed_in? %>
-    <%= link_to "Bookfreak", root_path %>
-    <%= current_user.name %>
-    <%= link_to 'マイページ', user_path(current_user.id) %>
-    <%= link_to "新規投稿", new_post_path %>
-    <%= link_to "投稿した書評", posts_path %>
-    <%= link_to "お気に入り", favorites_path %>
-    <%= link_to "ログアウト", logout_path %>
-    <%= search_form_for @q, url: search_posts_path do |f| %>
-      <%= f.label :author_or_title_or_body_cont, "キーワード" %>
-      <%= f.search_field :author_or_title_or_body_cont %>
-      <%= f.submit "検索" %>
-    <% end %>
-  <% else %>
-    <%= link_to "ログイン", login_path %>
-    <%= link_to "アカウント作成", signup_path %>
-  <% end %>
-</header>
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to "Bookfreak", root_path, class: "navbar-brand text-dark" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item text-dark"><%= link_to current_user.name, user_path(current_user.id), class: "nav-link" %></li>
+          <li class="nav-item text-dark"><%= link_to "新規投稿", new_post_path, class: "nav-link" %></li>
+          <li class="nav-item text-dark"><%= link_to "投稿した書評", posts_path, class: "nav-link" %></li>
+          <li class="nav-item text-dark"><%= link_to "お気に入り", favorites_path, class: "nav-link" %></li>
+          <li class="nav-item text-dark"><%= link_to "ログアウト", logout_path, class: "nav-link" %></li>
+        <% else %>
+          <li class="nav-item text-dark"><%= link_to "ログイン", login_path, class: "nav-link" %></li>
+          <li class="nav-item text-dark"><%= link_to "アカウント作成", signup_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
+      <%= search_form_for @q, url: search_posts_path do |f| %>
+        <%= f.search_field :author_or_title_or_body_cont %>
+        <%= f.submit "検索", class: "btn btn-outline-success" %>
+      <% end %>
+    </div>
+  </div>
+</nav>
