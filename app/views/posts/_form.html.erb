@@ -30,14 +30,12 @@
     <%= form.label :star,'評価 ', class:'col-md-3 col-form-label' %>
     <%= form.hidden_field :star, id: :review_star %>
   </div>
-
   <script>
   $('#star').raty({
     size     : 36,
     starOff:  '<%= asset_path('star-off.png') %>',
     starOn : '<%= asset_path('star-on.png') %>',
-
-    scoreName: 'comment[star]',
+    scoreName: 'post[star]',
     half: false,
   });
   </script>
