@@ -4,13 +4,11 @@
     <% posts.each do |post| %>
       <div class="col-lg-4">
         <div class="card h-100">
-
             <% if post.image.present? %>
-              <%= image_tag post.image, class: "img-responsive img-rounded h-50" %>
+              <%= image_tag post.image, class: "card-img-top img-responsive img-rounded", width: "100%", height: "300" %>
             <% else %>
-              <%= image_tag "book.jpg", class: "img-responsive img-rounded h-50" %>
+              <%= image_tag "book.jpg", class: "card-img-top img-responsive img-rounded", width: "100%", height: "300" %>
             <% end %>
-
           <div class="card-body">
             <h4 class="card-title"><%= post.title %></h4>
             <h6 class="card-title"><%= post.author %></h6>
