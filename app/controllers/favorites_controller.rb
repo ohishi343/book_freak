@@ -2,8 +2,8 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id).paginate(page: params[:page], per_page: 15)
-    @posts = Post.includes(:user).find(favorites)
+    favorite = Favorite.where(user_id: current_user).pluck(:post_id)
+    @posts = Post.where(id: favorite).includes(:user).order(created_at: :desc).paginate(page: params[:page], per_page: 15)
   end
 
   def create
