@@ -1,9 +1,7 @@
-<form>
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,24 +10,24 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :author %>
-    <%= form.text_field :author %>
+  <div class="mb-3">
+    <%= form.label :author, class: "form-label" %>
+    <%= form.text_field :author, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+  <div class="mb-3">
+    <%= form.label :body, class: "form-label" %>
+    <%= form.text_area :body, class: "form-control" %>
   </div>
 
-  <div class="form-group row" id="star">
-    <%= form.label :star,'評価 ', class:'col-md-3 col-form-label' %>
-    <%= form.hidden_field :star, id: :review_star %>
+  <div class="mb-3" id="star">
+    <%= form.label :star, '評価 ', class: "form-label" %>
+    <%= form.hidden_field :star %>
   </div>
   <script>
   $('#star').raty({
@@ -40,13 +38,13 @@
     half: false,
   });
   </script>
-  <div class="form-group">
-  <%= form.file_field :image %>
+
+  <div class="mb-3">
+    <%= form.label :image, '画像', class: "form-label" %>
+    <%= form.file_field :image, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit "登録", class: "btn btn-outline-success" %>
   </div>
 <% end %>
-
-</form>

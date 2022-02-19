@@ -2,16 +2,18 @@
   <div class="row">
     <% posts.each do |post| %>
       <div class="col-lg-4">
-        <div class="card">
-          <% if post.image.present? %>
-            <%= image_tag post.image %>
-          <% else %>
-            <%= image_tag "book.jpg" %>
-          <% end %>
+        <div class="card h-100">
+
+            <% if post.image.present? %>
+              <%= image_tag post.image, class: "img-responsive img-rounded h-50" %>
+            <% else %>
+              <%= image_tag "book.jpg", class: "img-responsive img-rounded h-50" %>
+            <% end %>
+
           <div class="card-body">
             <h4 class="card-title"><%= post.title %></h4>
             <h6 class="card-title"><%= post.author %></h6>
-            <p class="card-text"><%= post.body %></p>
+            <p class="card-text text-truncate"><%= post.body %></p>
             <div id="star-rate<%= post.id %>"></div>
             <script>
               $('#star-rate<%= post.id %>').raty({
@@ -23,19 +25,19 @@
                 score: <%= post.star %>,
               });
             </script>
-            <p class="card-text"><%= link_to post.user.name, post.user %></p>
-            <p class="card-text">
+            <br>
+            <%= link_to "続きを読む", post, class: "btn btn-outline-success" %>
+            <%= link_to post.user.name, post.user, class: "card-link" %>
               <% if user_signed_in? && current_user != post.user %>
                 <% if current_user.favorite_find(post.id) %>
-                  <td><%= link_to 'お気に入り解除', destroy_favorite_path(post.id), method: :delete %></td>
+                  <%= link_to 'お気に入り解除', destroy_favorite_path(post.id), method: :delete, class: "card-link" %>
                 <% else %>
-                  <td><%= link_to 'お気に入り登録', create_favorite_path(post.id), method: :post %></td>
+                  <%= link_to 'お気に入り登録', create_favorite_path(post.id), method: :post, class: "card-link" %>
                 <% end %>
               <% elsif user_signed_in? && current_user == post.user %>
-                <td><%= link_to '編集', edit_post_path(post) %></td>
-                <td><%= link_to '削除', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <%= link_to '編集', edit_post_path(post), class: "card-link" %>
+                <%= link_to '削除', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link" %>
               <% end %>
-            </p>
           </div>
         </div>
       </div>
