@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        author: 著者
+        title: タイトル
+        body: 書評
+        star: 評価
