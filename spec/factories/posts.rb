@@ -4,5 +4,6 @@ FactoryBot.define do
     title { "MyString" }
     body { "MyText" }
     star { 1 }
+    profile { "MyProfile" }
   end
 end
