@@ -41,18 +41,17 @@ RSpec.describe User, type: :model do
   describe "#favorite_find(post_id)" do
     let(:user) { create(:user) }
     let(:post) { create(:post) }
+    let(:favorite) { create(:favorite, user_id: user.id, post_id: post.id) }
     subject { user.favorite_find(post_id) }
 
     context "the favorite exists" do
-      let(:favorite) { create(:favorite, user_id: user.id, post_id: post.id) }
-      let(:post_id) { favorite.post_id }
+      post_id = favorite.post_id
 
       it { is_expected.to eq true }
     end
 
     context "the favorite doesn't exist" do
-      let(:favorite) { create(:favorite, user_id: user.id, post_id: post.id) }
-      let(:post_id) { favorite.post_id + 1 }
+      post_id = favorite.post_id + 1
 
       it { is_expected.to eq false }
     end
