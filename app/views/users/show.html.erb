@@ -1,11 +1,12 @@
+<div class="col-lg-8">
 <% if user_signed_in? && @user == current_user %>
-  <h1><%= @user.name %>のマイページ</h1>
-  <%= link_to "プロフィール編集", edit_user_registration_path %>
+  <h1><%= @user.name %></h1>
+  <%= link_to "プロフィール編集", edit_user_registration_path, class: "btn btn-outline-success mt-3" %>
 <% else %>
-  <h1><%= @user.name %>のユーザーページ</h1>
+  <h1><%= @user.name %></h1>
 <% end %>
 
-<table>
+<table class="table">
   <tr>
     <th>プロフィール画像</th>
     <td><% if @user.avatar.attached? %><%= image_tag @user.avatar, size: "100x100" %><% end %></td>
@@ -15,13 +16,16 @@
     <td><%= @user.name %></td>
   </tr>
   <tr>
-    <th>メールアドレス</th>
-    <td><%= @user.email %></td>
-  </tr>
-  <tr>
     <th>自己紹介</th>
     <td><% if @user.profile.present? %><%= @user.profile %><% end %></td>
   </tr>
+  <tr>
+    <th>投稿した書評</th>
+    <% @user.posts.each do |post| %>
+      <td><%= link_to post.title, post, class: "text-dark" %></td>
+    <% end %>
+  </tr>
 </table>
 
-<%= link_to "戻る", root_path %>
+<%= link_to "戻る", root_path, class: "btn btn-outline-primary mt-3" %>
+</div>
