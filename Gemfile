@@ -34,6 +34,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap-style'
 gem 'rails-i18n'
 gem 'devise-i18n'
+gem 'aws-sdk-s3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
