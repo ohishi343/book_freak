@@ -47,7 +47,7 @@ https://bookfreak.herokuapp.com/
 
 ## フロントエンド
 
-HTML / CSS / bootstrap / jQuery
+HTML / CSS / Bootstrap / jQuery
 
 ## サーバーサイド
 
@@ -61,4 +61,4 @@ AWS / Mysql / Heroku / Docker /
 
 ## その他
 
-Rspec / capybara /factory_bot / faker / rubocop
+Rspec / Capybara / FactoryBot / Faker / Rubocop
