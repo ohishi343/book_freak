@@ -88,6 +88,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
     diff-lcs (1.5.0)
     erubi (1.10.0)
     factory_bot (6.2.0)
@@ -95,6 +97,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -169,6 +173,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails-i18n (7.0.2)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (6.1.4.6)
       actionpack (= 6.1.4.6)
       activesupport (= 6.1.4.6)
@@ -285,6 +292,9 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (3.3.1)
+    will_paginate-bootstrap-style (0.2.4)
+      will_paginate (~> 3.0, >= 3.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.27)
@@ -299,7 +309,9 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  devise-i18n
   factory_bot_rails
+  faker
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mysql2 (~> 0.5)
@@ -309,6 +321,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.4)
+  rails-i18n
   ransack
   rspec-rails
   rubocop
@@ -321,6 +334,8 @@ DEPENDENCIES
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
+  will_paginate
+  will_paginate-bootstrap-style
 
 RUBY VERSION
    ruby 2.7.5p203

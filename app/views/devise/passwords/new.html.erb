@@ -1,0 +1,16 @@
+<div class="card col-lg-6 mx-auto mt-5">
+  <div class="card-body">
+    <h4>パスワード更新メールの送信先を入力してください。</h4>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="form-group">
+        <%= f.label :email, class: "form-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "メールを送信", class: "btn btn-outline-primary mt-3" %>
+      </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

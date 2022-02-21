@@ -1,0 +1,50 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :author, class: "form-label" %>
+    <%= form.text_field :author, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :body, class: "form-label" %>
+    <%= form.text_area :body, class: "form-control" %>
+  </div>
+
+  <div class="mb-3" id="star">
+    <%= form.label :star, '評価 ', class: "form-label" %>
+    <%= form.hidden_field :star, class: "form-control" %>
+  </div>
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    scoreName: 'post[star]',
+    half: false,
+  });
+  </script>
+
+  <div class="mb-3">
+    <%= form.label :image, '画像', class: "form-label" %>
+    <%= form.file_field :image, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "登録", class: "btn btn-outline-success" %>
+    <%= link_to '戻る', posts_path, class: "btn btn-outline-success" %>
+  </div>
+<% end %>

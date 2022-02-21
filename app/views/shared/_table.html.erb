@@ -1,0 +1,44 @@
+<%= will_paginate posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+<% posts.each do |post| %>
+  <div class="col-lg-4 mb-5">
+    <div class="card h-100">
+      <% if post.image.present? %>
+        <%= image_tag post.image, class: "card-img-top img-responsive img-rounded", width: "100%", height: "300" %>
+      <% else %>
+        <%= image_tag "book.jpg", class: "card-img-top img-responsive img-rounded", width: "100%", height: "300" %>
+      <% end %>
+      <div class="card-header">
+        <h4 class="card-title"><%= post.title %></h4>
+      </div>
+      <div class="card-body">
+        <h6 class="card-title"><%= post.author %></h6>
+        <p class="card-text text-truncate"><%= post.body %></p>
+        <div id="star-rate<%= post.id %>"></div>
+        <script>
+          $('#star-rate<%= post.id %>').raty({
+            size: 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn: '<%= asset_path('star-on.png') %>',
+            half: false,
+            readOnly: true,
+            score: <%= post.star %>,
+          });
+        </script>
+        <br>
+        <%= link_to "続きを読む", post, class: "btn btn-outline-success" %>
+        <%= link_to post.user.name, post.user, class: "btn btn-outline-info" %>
+        <% if user_signed_in? && current_user != post.user %>
+          <% if current_user.favorite_find(post.id) %>
+            <%= link_to 'お気に入り解除', destroy_favorite_path(post.id), method: :delete, class: "btn btn-danger" %>
+          <% else %>
+            <%= link_to 'お気に入り登録', create_favorite_path(post.id), method: :post, class: "btn btn-outline-danger" %>
+          <% end %>
+        <% elsif user_signed_in? && current_user == post.user %>
+          <%= link_to '編集', edit_post_path(post), class: "btn btn-outline-info" %>
+          <%= link_to '削除', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= will_paginate posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
