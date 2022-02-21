@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "test validations" do
-    let(:user) { create(:user) }
     subject { user.valid? }
+
+    let(:user) { create(:user) }
 
     it "is valid if there are email & password & name" do
       is_expected.to eq true
@@ -15,7 +16,7 @@ RSpec.describe User, type: :model do
     end
 
     it "is invalid if email is duplicated" do
-      expect(build(:user, email: user.email)).to_not be_valid
+      expect(build(:user, email: user.email)).not_to be_valid
     end
 
     it "is invalid if there is no password" do
@@ -29,19 +30,21 @@ RSpec.describe User, type: :model do
     end
 
     it "is invalid if name is too long" do
-      user.name = Faker::Lorem.characters(number:31)
+      user.name = Faker::Lorem.characters(number: 31)
       is_expected.to eq false
     end
 
     it "is invalid if profile is too long" do
-      user.profile = Faker::Lorem.characters(number:201)
+      user.profile = Faker::Lorem.characters(number: 201)
       is_expected.to eq false
     end
   end
+
   describe "#favorite_find(post_id)" do
+    subject { user.favorite_find(post_id) }
+
     let(:user) { create(:user) }
     let(:post) { create(:post) }
-    subject { user.favorite_find(post_id) }
 
     context "the favorite exists" do
       let(:favorite) { create(:favorite, user_id: user.id, post_id: post.id) }

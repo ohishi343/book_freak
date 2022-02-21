@@ -14,6 +14,7 @@ RSpec.describe "Users", type: :system do
           expect(current_path).to eq root_path
         end
       end
+
       context "No input" do
         it "failure" do
           visit signup_path
@@ -29,9 +30,12 @@ RSpec.describe "Users", type: :system do
         end
       end
     end
+
     describe "Edit user" do
       let(:user) { create(:user) }
+
       before { login(user) }
+
       context "Correct input" do
         it "Success" do
           visit edit_user_registration_path(user)
@@ -43,6 +47,7 @@ RSpec.describe "Users", type: :system do
           expect(current_path).to eq root_path
         end
       end
+
       context "Forget password" do
         it "failure" do
           visit edit_user_registration_path(user)

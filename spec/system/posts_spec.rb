@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Posts", type: :system do
   let(:user) { create(:user) }
+
   before { login(user) }
+
   describe "Post CRUD", js: true do
     describe "Create a post" do
       context "Correct input" do
@@ -16,6 +18,7 @@ RSpec.describe "Posts", type: :system do
           expect(current_path).to eq post_path
         end
       end
+
       context "Incorrect input" do
         it "Failure" do
           visit new_post_path
@@ -28,8 +31,10 @@ RSpec.describe "Posts", type: :system do
       end
     end
   end
+
   describe "Search posts" do
     let(:post) { create(:post) }
+
     it "Search a post by title" do
       visit root_path
       fill_in "q_author_or_title_or_body_cont", with: post.title

@@ -3,7 +3,8 @@ class FavoritesController < ApplicationController
 
   def index
     favorite = Favorite.where(user_id: current_user).pluck(:post_id)
-    @posts = Post.where(id: favorite).includes(:user).order(created_at: :desc).paginate(page: params[:page], per_page: 15)
+    @posts = Post.where(id: favorite).includes(:user).order(created_at: :desc).
+    paginate(page: params[:page], per_page: 15)
   end
 
   def create
