@@ -23,7 +23,7 @@ https://bookfreak.herokuapp.com/
 
 # ER図
 
-![名称未設定](https://user-images.githubusercontent.com/67816862/155000607-68d1961a-9819-4c5a-b122-93ca4b335638.png)
+![名称未設定](https://user-images.githubusercontent.com/67816862/155001311-e4af7edb-f618-46b4-8a27-8583875eb3e7.jpg)
 
 # 機能一覧
 
