@@ -60,7 +60,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = @q.result.order(created_at: :desc)
+    @posts = @q.result.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
   end
 
   private
