@@ -32,12 +32,7 @@ RSpec.describe "Users", type: :system do
       end
     end
     describe "Edit user" do
-      before do
-        visit login_path
-        fill_in "Eメール", with: user.email
-        fill_in "パスワード", with: user.password
-        click_on "ログイン"
-      end
+      before { login(user) }
       context "Correct input" do
         it "Success" do
           visit edit_user_path(user)
