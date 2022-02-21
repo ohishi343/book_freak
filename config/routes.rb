@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :favorites, only: [:index]
   post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
   delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 end
