@@ -30,8 +30,8 @@
         <%= link_to "続きを読む", post, class: "btn btn-outline-success" %>
         <%= link_to post.user.name, post.user, class: "btn btn-outline-info" %>
         <% if user_signed_in? && current_user != post.user %>
-          <div id="favorite_button_<%= post.id %>">
-            <%= render "favorites/favorite", post: post %>　
+          <div id="favorite_button_<%= post.id %>" style="display: inline-block" class="mx-2">
+            <%= render "favorites/favorite", post: post %>
           </div>
         <% elsif user_signed_in? && current_user == post.user %>
           <%= link_to '編集', edit_post_path(post), class: "btn btn-outline-info" %>
