@@ -16,7 +16,12 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     get "search", on: :collection
   end
-  resources :users, only: [:show]
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
   root "homes#toppage"

@@ -1,0 +1,44 @@
+<div class="col-lg-4 my-5">
+  <div class="card h-100">
+    <div class="card-header">
+  <% if user_signed_in? && user == current_user %>
+    <h2><%= user.name %></h2>
+    <%= link_to "プロフィール編集", edit_user_registration_path, class: "btn btn-outline-success mt-3" %>
+  <% else %>
+    <h2><%= user.name %></h2>
+  <% end %>
+  </div>
+  <div class="card-body">
+    <table>
+    <tr>
+      <th>プロフィール画像</th>
+      <td>
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar, size: "100x100" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>自己紹介</th>
+      <td>
+        <% if user.profile.present? %><%= user.profile %>
+        <% end %>
+      </td>
+    </tr>
+    </table>
+  <div class="followers">
+    <%= link_to followers_user_path(user.id) do %>
+      <h5 style="color: black;">フォロワー<%= user.followers.count %>人</h5>
+    <% end %>
+  </div>
+  <div class="following">
+    <%= link_to following_user_path(user.id) do %>
+    <h5 style="color: black;">フォロー<%= user.following.count %>人</h5>
+  <% end %>
+  </div>
+  <div>
+    <%= render "follow_button" %>
+  </div>
+  </div>
+</div>
+</div>
