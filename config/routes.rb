@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get "logout", to: "users/sessions#destroy"
   end
 
-  root "homes#index"
+  get "toppage", to: "homes#toppage"
   resources :homes, only: [:index]
   resources :posts do
     get "search", on: :collection
@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
   delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
+
+  root "homes#toppage"
 end

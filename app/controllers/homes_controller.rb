@@ -4,6 +4,10 @@ class HomesController < ApplicationController
       paginate(page: params[:page], per_page: 12)
   end
 
+  def toppage
+    redirect_to homes_path if user_signed_in?
+  end
+
   def guest_sign_in
     user = User.find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

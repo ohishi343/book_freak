@@ -1,3 +1,5 @@
+<div class="container">
+<div class="row">
 <%= will_paginate posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 <% posts.each do |post| %>
   <div class="col-lg-4 mb-5">
@@ -42,3 +44,5 @@
   </div>
 <% end %>
 <%= will_paginate posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+</div>
+</div>
