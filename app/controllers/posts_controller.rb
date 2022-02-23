@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.where(user_id: current_user.id).order(created_at: :desc).
-      paginate(page: params[:page], per_page: 15)
+      paginate(page: params[:page], per_page: 12)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -62,7 +62,7 @@ class PostsController < ApplicationController
 
   def search
     @posts = @q.result.order(created_at: :desc).
-      paginate(page: params[:page], per_page: 15)
+      paginate(page: params[:page], per_page: 12)
   end
 
   private
