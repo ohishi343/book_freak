@@ -13,12 +13,10 @@ Rails.application.routes.draw do
   get "toppage", to: "homes#toppage"
   resources :homes, only: [:index]
   resources :posts do
+    resource :favorites, only: [:create, :destroy]
     get "search", on: :collection
   end
   resources :users, only: [:show]
-  resources :favorites, only: [:index]
-  post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
-  delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
   root "homes#toppage"
