@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   before_action :set_post
 
   def create
-    @favorite = Favorite.new(user_id: current_user.id,  post_id: @post.id)
+    @favorite = Favorite.new(user_id: current_user.id, post_id: @post.id)
     @favorite.save
   end
 
