@@ -24,8 +24,8 @@
           <script>
             $('#star-rate<%= @post.id %>').raty({
               size: 36,
-              starOff: '<%= asset_path(' star - off.png ') %>',
-              starOn: '<%= asset_path(' star - on.png ') %>',
+              starOff: '<%= asset_path('star-off.png') %>',
+              starOn: '<%= asset_path('star-on.png') %>',
               half: false,
               readOnly: true,
               score: <%= @post.star %>
@@ -34,6 +34,12 @@
           <br>
           <%= link_to @post.user.name, @post.user, class: "btn btn-outline-info" %>
         </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">関連商品</h4>
+        </div>
+        <%= render "books_list" %>
       </div>
     </div>
   </div>
