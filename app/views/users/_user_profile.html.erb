@@ -37,7 +37,11 @@
   <% end %>
   </div>
   <div>
-    <%= render "follow_button" %>
+    <% if user_signed_in? && user != current_user %>
+      <div id="follow_button">
+        <%= render "relationships/follow_button", user: user %>
+      </div>
+    <% end %>
   </div>
   </div>
 </div>

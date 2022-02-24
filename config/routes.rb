@@ -17,11 +17,9 @@ Rails.application.routes.draw do
     get "search", on: :collection
   end
   resources :users do
-    member do
-      get :following, :followers
-    end
+    resource :relationships, only: [:create, :destroy]
+    get :following, :followers, on: :member
   end
-  resources :relationships, only: [:create, :destroy]
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
   root "homes#toppage"
