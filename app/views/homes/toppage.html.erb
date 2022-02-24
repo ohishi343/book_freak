@@ -7,9 +7,15 @@
       </div>
       <div class="col-lg-8 align-self-baseline">
         <p class="text-white-75 mb-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p>
-        <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class: "btn btn-primary btn-xl" %>
+        <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class: "btn btn-warning btn-xl" %>
         <%= link_to "アカウント作成", signup_path, class: "btn btn-primary btn-xl" %>
         <%= link_to "ログイン", login_path, class: "btn btn-primary btn-xl" %>
+      </div>
+      <div class="col-lg-8 align-self-baseline">
+        <%= search_form_for @q, url: search_posts_path do |f| %>
+          <%= f.search_field :author_or_title_or_body_cont %>
+          <%= f.submit "検索", class: "btn btn-success btn-xl" %>
+        <% end %>
       </div>
     </div>
   </div>
