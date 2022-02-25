@@ -49,8 +49,6 @@ https://bookfreak.herokuapp.com/
 
 楽天APIによる関連商品表示機能
 
-ページめくり機能(will_paginate)
-
 ゲストユーザーログイン機能
 
 # 使用した技術
