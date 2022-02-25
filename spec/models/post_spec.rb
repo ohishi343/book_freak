@@ -55,4 +55,22 @@ RSpec.describe Post, type: :model do
       is_expected.to eq false
     end
   end
+  describe "#favorited_by?(user)" do
+    subject { post.favorited_by?(user) }
+
+    let!(:user) { create(:user) }
+    let!(:post) { create(:post) }
+
+    context "the favorite exists" do
+      let!(:favorite) { create(:favorite, user: user, post: post) }
+
+      it { is_expected.to eq true }
+    end
+
+    context "the favorite doesn't exist" do
+      let!(:favorite) { create(:favorite) }
+
+      it { is_expected.to eq false }
+    end
+  end
 end
