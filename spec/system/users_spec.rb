@@ -11,7 +11,7 @@ RSpec.describe "Users", type: :system do
           fill_in "パスワード", with: "password"
           fill_in "パスワード（確認用）", with: "password"
           click_button "アカウント作成"
-          expect(current_path).to eq root_path
+          expect(current_path).to eq homes_path
         end
       end
 
@@ -44,7 +44,7 @@ RSpec.describe "Users", type: :system do
           fill_in "自己紹介", with: Faker::Lorem.characters(number: 100)
           fill_in "現在のパスワード", with: user.password
           click_button "アカウント更新"
-          expect(current_path).to eq root_path
+          expect(current_path).to eq homes_path
         end
       end
 

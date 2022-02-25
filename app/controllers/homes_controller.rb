@@ -1,7 +1,11 @@
 class HomesController < ApplicationController
   def index
     @posts = Post.includes(:user, :favorites).order(created_at: :desc).
-      paginate(page: params[:page], per_page: 15)
+      paginate(page: params[:page], per_page: 12)
+  end
+
+  def toppage
+    redirect_to homes_path if user_signed_in?
   end
 
   def guest_sign_in

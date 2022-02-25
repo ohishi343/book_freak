@@ -28,12 +28,14 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+gem 'aws-sdk-s3'
 gem "devise"
 gem "ransack"
 gem 'will_paginate'
 gem 'will_paginate-bootstrap-style'
 gem 'rails-i18n'
 gem 'devise-i18n'
+gem 'rakuten_web_service'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

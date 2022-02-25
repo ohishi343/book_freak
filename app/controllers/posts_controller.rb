@@ -1,16 +1,17 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :search]
   before_action :set_post, only: %i(show edit update destroy)
   before_action :ensure_user, only: [:edit, :update, :destroy]
 
   # GET /posts or /posts.json
   def index
     @posts = Post.where(user_id: current_user.id).order(created_at: :desc).
-      paginate(page: params[:page], per_page: 15)
+      paginate(page: params[:page], per_page: 12)
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    @books = RakutenWebService::Books::Book.search(title: @post.title, hits: 3)
   end
 
   # GET /posts/new
@@ -62,7 +63,7 @@ class PostsController < ApplicationController
 
   def search
     @posts = @q.result.order(created_at: :desc).
-      paginate(page: params[:page], per_page: 15)
+      paginate(page: params[:page], per_page: 12)
   end
 
   private

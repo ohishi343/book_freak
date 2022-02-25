@@ -5,9 +5,9 @@ RSpec.describe "Posts", type: :system do
 
   before { login(user) }
 
-  describe "Post CRUD", js: true do
+  describe "Post CRUD" do
     describe "Create a post" do
-      context "Correct input" do
+      context "Correct input", js: true do
         it "Success" do
           visit new_post_path
           fill_in "著者", with: Faker::Lorem.characters(number: 5)
@@ -26,7 +26,7 @@ RSpec.describe "Posts", type: :system do
           fill_in "タイトル", with: ""
           fill_in "書評", with: ""
           click_button "登録"
-          expect(current_path).to eq new_post_path
+          expect(current_path).to eq posts_path
         end
       end
     end

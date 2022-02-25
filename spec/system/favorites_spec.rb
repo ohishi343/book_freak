@@ -10,14 +10,8 @@ RSpec.describe "Favorites", type: :system do
     before { login(user) }
 
     it "Show the post in list of favorites" do
-      visit favorites_path
+      visit user_path(user)
       expect(page).to have_content post.title
-    end
-    it "Destroy the favorite" do
-      visit favorites_path
-      click_on "お気に入り解除"
-      expect(current_path).to eq favorites_path
-      expect(page).not_to have_content post.title
     end
   end
 end

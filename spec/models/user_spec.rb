@@ -39,25 +39,4 @@ RSpec.describe User, type: :model do
       is_expected.to eq false
     end
   end
-
-  describe "#favorite_find(post_id)" do
-    subject { user.favorite_find(post_id) }
-
-    let(:user) { create(:user) }
-    let(:post) { create(:post) }
-
-    context "the favorite exists" do
-      let(:favorite) { create(:favorite, user_id: user.id, post_id: post.id) }
-      let(:post_id) { favorite.post_id }
-
-      it { is_expected.to eq true }
-    end
-
-    context "the favorite doesn't exist" do
-      let(:favorite) { create(:favorite, user_id: user.id, post_id: post.id) }
-      let(:post_id) { favorite.post_id + 1 }
-
-      it { is_expected.to eq false }
-    end
-  end
 end

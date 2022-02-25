@@ -1,5 +1,2 @@
-<% unless user_signed_in? %>
-  <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class: "btn btn-warning mt-3" %>
-<% end %>
-<h1 class="my-3">ホーム</h1>
+<% content_for(:title, "ホーム") %>
 <%= render "shared/table", posts: @posts %>
