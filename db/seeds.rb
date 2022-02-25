@@ -8,8 +8,8 @@
 
 10.times do |n|
   user = User.new(
-    name: "user#{n + 1}",
-    email: "example#{n + 1}@example.com",
+    name: Faker::Lorem.characters(number: 5),
+    email: Faker::Internet.email,
     password: "password"
   )
   user.save!

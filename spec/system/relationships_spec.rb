@@ -6,7 +6,7 @@ RSpec.describe "Relationships", type: :system do
     @user2 = create(:user)
   end
 
-  describe '#create,#destroy' do
+  describe '#create,#destroy', js: true do
     it 'ユーザーをフォロー、フォロー解除できる' do
       login(@user2)
       visit user_path(@user1)

@@ -45,16 +45,12 @@ RSpec.describe Post, type: :model do
       is_expected.to eq false
     end
 
-    it "is invalid if star is not number" do
-      post.star = Faker::Lorem.characters(number: 3)
-      is_expected.to eq false
-    end
-
     it "is invalid if there is no user_id" do
       post.user_id = ""
       is_expected.to eq false
     end
   end
+
   describe "#favorited_by?(user)" do
     subject { post.favorited_by?(user) }
 
