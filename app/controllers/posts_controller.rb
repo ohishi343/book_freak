@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @book = RakutenWebService::Books::Book.search(title: @post.title, author: @post.author, hits: 1)
     @books = RakutenWebService::Books::Book.search(title: @post.title, hits: 3)
   end
 

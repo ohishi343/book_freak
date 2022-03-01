@@ -2,6 +2,7 @@
 <div class="card-body">
 
 <h2>ログイン</h2>
+<%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class: "btn btn-warning btn-xl" %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-group">
