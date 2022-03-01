@@ -2,17 +2,23 @@
   <div class="card h-100">
     <div class="card-header">
       <% if user_signed_in? && user == current_user %>
-        <h2><%= user.name %></h2>
+        <h2><%= link_to user.name, user_path(user) %></h2>
         <%= link_to "プロフィール編集", edit_user_registration_path, class: "btn btn-outline-success mt-3" %>
       <% else %>
-        <h2><%= user.name %></h2>
+        <h2><%= link_to user.name, user_path(user) %></h2>
       <% end %>
     </div>
     <div class="card-body">
       <table>
         <tr>
           <th>プロフィール画像</th>
-          <td><%= image_tag user.avatar, size: "100x100" if user.avatar.attached? %></td>
+          <td>
+            <% if user.avatar.attached? %>
+              <%= image_tag user.avatar, size: "100x100" %>
+            <% else %>
+              <%= image_tag "default_icon.png", size: "100x100" %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th>自己紹介</th>

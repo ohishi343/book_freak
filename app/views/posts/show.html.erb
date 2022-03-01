@@ -15,7 +15,13 @@
     <div class="col-lg-8 mt-5">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"><%= @post.title %></h4>
+          <h4 class="card-title">
+            <% if @book.first %>
+              <%= link_to @post.title, @book.first.item_url %>
+            <% else %>
+              <%= @post.title %>
+            <% end %>
+          </h4>
         </div>
         <div class="card-body">
           <h6 class="card-title"><%= @post.author %></h6>
@@ -39,7 +45,7 @@
         <div class="card-header">
           <h4 class="card-title">関連商品</h4>
         </div>
-        <%= render "books_list" %>
+        <%= render "books_list", books: @books %>
       </div>
     </div>
   </div>
